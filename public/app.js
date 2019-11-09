@@ -1,33 +1,29 @@
-$(document).on("click", ".savenote", addNote);
+$(document).on("click", ".save-note", addNote);
+$(document).on("click", ".delete-note", deleteNote);
+
 function addNote() {
-  console.log("something works");
-  var noteTitle = $(`input[data-value=title-${this.id}]`).val();
-  var noteBody = $(`input[data-value=body-${this.id}]`).val();
-  console.log(noteBody);
-  console.log(noteTitle);
-
   var thisId = $(this).attr("id");
-  console.log(thisId);
 
-  // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "POST",
     url: "/articles/" + thisId,
     data: {
-      // Value taken from title input
-      title: $(`input[data-value=title-${this.id}]`)
-        .val()
-        .trim(),
-      // Value taken from note textarea
-      body: $(`input[data-value=body-${this.id}]`)
-        .val()
-        .trim()
+      title: $(`input[data-value=title-${this.id}]`).val(),
+      body: $(`input[data-value=body-${this.id}]`).val()
     }
-  })
-    // With that done
-    .then(function(data) {
-      // Log the response
-      console.log(data);
-      // Empty the notes section
-    });
+  }).then(function(data) {
+    location.reload();
+    console.log(data);
+  });
+}
+
+function deleteNote() {
+  var thisId = $(this).attr("id");
+  $.ajax({
+    method: "DELETE",
+    url: "/articles/" + thisId
+  }).then(function(data) {
+    location.reload();
+    console.log(data);
+  });
 }

@@ -1,21 +1,24 @@
+<h1>News</h1>
 <div>
-    <ul>
+    {{#each dbArticle}}
+    <div class="flex-container">
+        <div class="article-info">
+            <a href={{this.link}}>{{this.headline}}</a>
+            <p> {{this.summary}}</p>
 
-        {{#each dbArticle}}
-        <li><a href={{this.link}}>{{this.headline}}</a>
-            <p>
-                {{this.summary}}
-            </p>
-        </li>
-        {{!-- <form>
-            <input name='title'>
-            <textarea name='body'></textarea>
-            <button data-id={{this._id}} class='savenote'>Save Note</button>
-        </form> --}}
-        <input type="text" data-value="title-{{this.id}}" class="form-control" placeholder="Note Title">
-        <input type="text" data-value="body-{{this.id}}" class="form-control" placeholder="Note Text">
-        <button id={{this.id}} class="savenote">Add Note</button>
-        <br>
-        {{/each}}
-    </ul>
+            <input type="text" data-value="title-{{this.id}}" class="form-control" placeholder="Note Title">
+            <input type="text" data-value="body-{{this.id}}" class="form-control" placeholder="Note Text">
+            <button id={{this.id}} class="save-note">Add Note</button>
+            <br>
+        </div>
+
+        <div class="note-info">
+            {{#if this.note}}
+            <p>{{this.note.title}}</p>
+            <p>{{this.note.body}}</p>
+            <button id={{this.note.id}} class="delete-note">Delete Note</button>
+            {{/if}}
+        </div>
+    </div>
+    {{/each}}
 </div>

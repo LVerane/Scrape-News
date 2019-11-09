@@ -1,14 +1,9 @@
-// Set Handlebars.
-
 const express = require("express");
 const app = express();
 const port = 3000;
 var exphbs = require("express-handlebars");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-// var axios = require("axios");
-// var cheerio = require("cheerio");
-// var db = require("./models");
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));

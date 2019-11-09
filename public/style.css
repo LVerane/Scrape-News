@@ -1,0 +1,9 @@
+.article-info,
+.note-info {
+  width: 40%;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
