@@ -1,0 +1,21 @@
+<div>
+    <ul>
+
+        {{#each dbArticle}}
+        <li><a href={{this.link}}>{{this.headline}}</a>
+            <p>
+                {{this.summary}}
+            </p>
+        </li>
+        {{!-- <form>
+            <input name='title'>
+            <textarea name='body'></textarea>
+            <button data-id={{this._id}} class='savenote'>Save Note</button>
+        </form> --}}
+        <input type="text" data-value="title-{{this.id}}" class="form-control" placeholder="Note Title">
+        <input type="text" data-value="body-{{this.id}}" class="form-control" placeholder="Note Text">
+        <button id={{this.id}} class="savenote">Add Note</button>
+        <br>
+        {{/each}}
+    </ul>
+</div>
