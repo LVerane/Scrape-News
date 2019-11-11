@@ -1,10 +1,14 @@
-<h1>News</h1>
+<div class="flex-container header">
+    <h1>News</h1>
+    <button class="scrape">Scrape new news!</button>
+    <h1>Notes</h1>
+</div>
 <div>
     {{#each dbArticle}}
     <div class="flex-container">
         <div class="article-info">
-            <a href={{this.link}}>{{this.headline}}</a>
-            <p> {{this.summary}}</p>
+            <h2><a href={{this.link}}>{{this.headline}}</a></h2>
+            <h3> {{this.summary}}</h3>
 
             <input type="text" data-value="title-{{this.id}}" class="form-control" placeholder="Note Title">
             <input type="text" data-value="body-{{this.id}}" class="form-control" placeholder="Note Text">
@@ -12,12 +16,16 @@
             <br>
         </div>
 
-        <div class="note-info">
-            {{#if this.note}}
-            <p>{{this.note.title}}</p>
-            <p>{{this.note.body}}</p>
-            <button id={{this.note.id}} class="delete-note">Delete Note</button>
-            {{/if}}
+        <div class="note-container">
+            {{!-- {{#if this.note}} --}}
+            {{#each this.note}}
+            <div class="note-info">
+                <p>{{title}}</p>
+                <p>{{body}}</p>
+                <button id={{id}} class="delete-note">Delete Note</button>
+            </div>
+            {{/each}}
+            {{!-- {{/if}} --}}
         </div>
     </div>
     {{/each}}

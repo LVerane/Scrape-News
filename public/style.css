@@ -1,9 +1,21 @@
 .article-info,
-.note-info {
+.note-info,
+.header {
+  background: #faebd7;
+  padding: 10px 20px;
+  margin: 10px 0;
+}
+.article-info,
+.note-container {
   width: 40%;
+}
+.header {
+  width: 90%;
+  margin: auto;
 }
 .flex-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
